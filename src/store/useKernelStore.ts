@@ -18,10 +18,10 @@ import { createDefaultBankersState, checkSafety, requestResources } from '../eng
 import { createInitialVFS, executeCommand } from '../engine/filesystem';
 
 const INITIAL_PROCESSES: ProcessInput[] = [
-  { id: 'P1', name: 'P1 (Compiler)', arrivalTime: 0, burstTime: 8, priority: 3, color: '#38bdf8' },
-  { id: 'P2', name: 'P2 (Database)', arrivalTime: 1, burstTime: 4, priority: 1, color: '#4ade80' },
-  { id: 'P3', name: 'P3 (Web Server)', arrivalTime: 2, burstTime: 9, priority: 4, color: '#facc15' },
-  { id: 'P4', name: 'P4 (Audio Daemon)', arrivalTime: 3, burstTime: 5, priority: 2, color: '#f43f5e' },
+  { id: 'P1', name: 'P1 (Compiler)', arrivalTime: 0, burstTime: 8, priority: 3, color: '#8888cc' },
+  { id: 'P2', name: 'P2 (Database)', arrivalTime: 1, burstTime: 4, priority: 1, color: '#9cb860' },
+  { id: 'P3', name: 'P3 (Web Server)', arrivalTime: 2, burstTime: 9, priority: 4, color: '#e0b84a' },
+  { id: 'P4', name: 'P4 (Audio Daemon)', arrivalTime: 3, burstTime: 5, priority: 2, color: '#cf7a6b' },
 ];
 
 const INITIAL_PAGE_REF = [7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1];
@@ -78,7 +78,7 @@ interface KernelState {
   resetAll: () => void;
 }
 
-const STORAGE_KEY = 'kernel_os_state_v1';
+const STORAGE_KEY = 'kernel_os_state_v2';
 
 const initialVFS = createInitialVFS();
 const initialBankers = createDefaultBankersState();
@@ -123,7 +123,7 @@ export const useKernelStore = create<KernelState>((set, get) => ({
   setMemoryAlgorithm: (algo) => set({ memoryAlgorithm: algo }),
   allocateMem: (name, size) => {
     const { memoryBlocks, memoryAlgorithm } = get();
-    const colors = ['#06b6d4', '#818cf8', '#f59e0b', '#34d399', '#ec4899', '#a855f7'];
+    const colors = ['#8888cc', '#9cb860', '#e0b84a', '#cf7a6b', '#6fb1b1', '#b48ac0'];
     const chosenColor = colors[Math.floor(Math.random() * colors.length)];
     const res = allocateMemory(memoryBlocks, name, size, memoryAlgorithm, chosenColor);
     if (res.success) {

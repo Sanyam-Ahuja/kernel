@@ -2,7 +2,7 @@ import { MemoryBlock, MemoryAlgorithm } from '../types';
 
 export function initializeMemory(totalSize: number = 1024): MemoryBlock[] {
   return [
-    { id: 'blk-os', start: 0, size: 128, isAllocated: true, processName: 'Kernel OS', color: '#64748b' },
+    { id: 'blk-os', start: 0, size: 128, isAllocated: true, processName: 'Kernel OS', color: '#99994c' },
     { id: 'blk-free-1', start: 128, size: 896, isAllocated: false },
   ];
 }
@@ -12,7 +12,7 @@ export function allocateMemory(
   processName: string,
   requestSize: number,
   algorithm: MemoryAlgorithm,
-  color: string = '#06b6d4'
+  color: string = '#8888cc'
 ): { success: boolean; blocks: MemoryBlock[]; error?: string } {
   const freeBlocks = blocks
     .map((blk, idx) => ({ blk, idx }))
